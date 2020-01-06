@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Insets;
 import org.codehaus.jackson.map.ObjectMapper;
-import hanze.nl.tijdtools.InfobordTijdFuncties;
+//import hanze.nl.tijdtools.InfobordTijdFuncties;
 
 public class InfoBord {
 
@@ -99,9 +99,9 @@ public class InfoBord {
 	}
 
 	private void repaintInfoBord(String[] infoTekst){
-		InfobordTijdFuncties tijdfuncties = new InfobordTijdFuncties();
-		String tijd = tijdfuncties.getCentralTime().toString();
-		tijdregel2.setText(tijd);
+//		InfobordTijdFuncties tijdfuncties = new InfobordTijdFuncties();
+//		String tijd = tijdfuncties.getCentralTime().toString();
+//		tijdregel2.setText(tijd);
 		regel1.setText(infoTekst[0]);
 		regel2.setText(infoTekst[1]);
 		regel3.setText(infoTekst[2]);

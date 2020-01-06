@@ -99,11 +99,6 @@ public class Bus{
 	}
 
 	public void sendBericht(Bericht bericht){
-    	XStream xstream = new XStream();
-    	xstream.alias("Bericht", Bericht.class);
-    	xstream.alias("ETA", ETA.class);
-    	String xml = xstream.toXML(bericht);
-    	Producer producer = new Producer();
-    	producer.sendBericht(xml);		
+		//TODO verstuur een XML bericht naar de messagebroker.	
 	}
 }
