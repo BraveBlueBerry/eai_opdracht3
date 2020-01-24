@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Insets;
 import org.codehaus.jackson.map.ObjectMapper;
-//import hanze.nl.tijdtools.InfobordTijdFuncties;
 
 public class InfoBord {
 
@@ -81,27 +80,27 @@ public class InfoBord {
 				}
 			}
 		}
-		if(checkRepaint(aantalRegels, aankomsttijden)){
+		int hash = calcHash(aantalRegels, aankomsttijden);
+		if(hash != hashValue){
+		    updateHash(hash);
 			repaintInfoBord(infoTekst);
 		}
 	}
-	
-	private boolean checkRepaint(int aantalRegels, int[] aankomsttijden){
+
+	private void updateHash(int hash){
+	    hashValue = hash;
+    }
+
+	private int calcHash(int aantalRegels, int[] aankomsttijden){
 		int totaalTijden=0;
 		for(int i=0; i<aantalRegels;i++){
 			totaalTijden+=aankomsttijden[i];
 		}
-		if(hashValue!=totaalTijden){
-			hashValue=totaalTijden;
-			return true;
-		}
-		return false;
+
+		return totaalTijden;
 	}
 
 	private void repaintInfoBord(String[] infoTekst){
-//		InfobordTijdFuncties tijdfuncties = new InfobordTijdFuncties();
-//		String tijd = tijdfuncties.getCentralTime().toString();
-//		tijdregel2.setText(tijd);
 		regel1.setText(infoTekst[0]);
 		regel2.setText(infoTekst[1]);
 		regel3.setText(infoTekst[2]);
