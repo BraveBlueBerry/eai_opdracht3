@@ -40,11 +40,9 @@ public class Bus{
 					lijn.name(), lijn.getHalte(halteNummer), lijn.getRichting(halteNummer));
 			return true;
 		}
-		else {
-			System.out.printf("Bus %s heeft halte %s, richting %d bereikt.%n", 
-					lijn.name(), lijn.getHalte(halteNummer), lijn.getRichting(halteNummer));		
-			naarVolgendeHalte();
-		}		
+		System.out.printf("Bus %s heeft halte %s, richting %d bereikt.%n",
+				lijn.name(), lijn.getHalte(halteNummer), lijn.getRichting(halteNummer));
+		naarVolgendeHalte();
 		return false;
 	}
 	
