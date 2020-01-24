@@ -38,11 +38,11 @@ public enum Lijnen {
 		return haltes[positie].richting;
 	}
 	
-	static class Stop{
+	static class Stop {
 		Halte halte;
 		int richting;
 		
-		public Stop(Halte halte, int richting){
+		Stop(Halte halte, int richting){
 			this.halte=halte;
 			this.richting=richting;
 		}

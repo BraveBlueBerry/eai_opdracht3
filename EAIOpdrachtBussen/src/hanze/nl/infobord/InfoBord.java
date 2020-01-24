@@ -117,7 +117,7 @@ public class InfoBord {
 		}
 	}
 
-	public static void verwerkBericht(String incoming) throws IOException {
+	private static void verwerkBericht(String incoming) throws IOException {
 		JSONBericht bericht = new ObjectMapper().readValue(incoming, JSONBericht.class);
 		String busID = bericht.getBusID();
 		Integer tijd = bericht.getTijd();

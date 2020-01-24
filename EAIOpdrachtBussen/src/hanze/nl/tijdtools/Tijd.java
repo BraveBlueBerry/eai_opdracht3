@@ -12,14 +12,14 @@ public class Tijd
 		this.seconde = 0;		
 	}
 	
-	public Tijd(int uur, int minuut, int seconde) {
+	Tijd(int uur, int minuut, int seconde) {
 		super();
 		this.uur = uur;
 		this.minuut = minuut;
 		this.seconde = seconde;
 	}
 
-	public int getUur() {
+	int getUur() {
 		return uur;
 	}
 
@@ -27,7 +27,7 @@ public class Tijd
 		this.uur = uur;
 	}
 
-	public int getMinuut() {
+	int getMinuut() {
 		return minuut;
 	}
 
@@ -35,7 +35,7 @@ public class Tijd
 		this.minuut = minuut;
 	}
 
-	public int getSeconde() {
+	int getSeconde() {
 		return seconde;
 	}
 
@@ -43,7 +43,7 @@ public class Tijd
 		this.seconde = seconde;
 	}
 	
-	public void increment(Tijd step){
+	void increment(Tijd step){
 		this.seconde += step.seconde;
 		this.minuut += step.minuut;
 		this.uur += step.uur;
@@ -57,7 +57,7 @@ public class Tijd
 		}
 	}
 
-	public Tijd copyTijd(){
+	Tijd copyTijd(){
 		return new Tijd(this.uur, this.minuut, this.seconde);
 	}
 	

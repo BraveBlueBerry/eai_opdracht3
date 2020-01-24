@@ -31,7 +31,7 @@ public class Runner {
 		return (!busStart.isEmpty()) ? Collections.min(busStart.keySet()) : -1;
 	}
 	
-	public static void moveBussen(int nu){
+	private static void moveBussen(int nu){
 		Iterator<Bus> itr = actieveBussen.iterator();
 		while (itr.hasNext()) {
 			Bus bus = itr.next();
@@ -43,7 +43,7 @@ public class Runner {
 		}		
 	}
 
-	public static void sendETAs(int nu){
+	private static void sendETAs(int nu){
 		Iterator<Bus> itr = actieveBussen.iterator();
 		while (itr.hasNext()) {
 			Bus bus = itr.next();
@@ -51,7 +51,7 @@ public class Runner {
 		}				
 	}
 	
-	public static int initBussen(){
+	private static int initBussen(){
 		Bus bus1=new Bus(Lijnen.LIJN1, Bedrijven.ARRIVA, 1);
 		Bus bus2=new Bus(Lijnen.LIJN2, Bedrijven.ARRIVA, 1);
 		Bus bus3=new Bus(Lijnen.LIJN3, Bedrijven.ARRIVA, 1);

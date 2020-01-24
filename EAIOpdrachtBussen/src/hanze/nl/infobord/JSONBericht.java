@@ -24,7 +24,7 @@ public class JSONBericht {
 		
 	}
 
-	public int getTijd() {
+	int getTijd() {
 		return tijd;
 	}
 
@@ -32,7 +32,7 @@ public class JSONBericht {
 		this.tijd = tijd;
 	}
 
-	public int getAankomsttijd() {
+	int getAankomsttijd() {
 		return aankomsttijd;
 	}
 
@@ -48,7 +48,7 @@ public class JSONBericht {
 		this.lijnNaam = lijnNaam;
 	}
 
-	public String getBusID() {
+	String getBusID() {
 		return busID;
 	}
 
@@ -72,7 +72,7 @@ public class JSONBericht {
 		this.eindpunt = eindpunt;
 	}
 
-	public String getInfoRegel() {
+	String getInfoRegel() {
 //		InfobordTijdFuncties tijdFuncties = new InfobordTijdFuncties();
 //		String tijd = tijdFuncties.getFormattedTimeFromCounter(aankomsttijd);
 		String tijd = "" + aankomsttijd;

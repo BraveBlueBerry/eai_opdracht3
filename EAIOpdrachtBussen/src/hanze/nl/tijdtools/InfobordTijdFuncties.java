@@ -15,7 +15,7 @@ public class InfobordTijdFuncties {
 		}
     }
 
-    public Tijd getCentralTime() throws IOException {
+    private Tijd getCentralTime() throws IOException {
 		HTTPFuncties httpFuncties = new HTTPFuncties();
 		String result = httpFuncties.executeGet("json");
 		Tijd tijd = new ObjectMapper().readValue(result, Tijd.class);

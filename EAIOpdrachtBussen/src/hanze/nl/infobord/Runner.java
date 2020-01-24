@@ -2,7 +2,7 @@ package hanze.nl.infobord;
 
 public class Runner {
 	
-	public static void thread(Runnable runnable, boolean daemon) {
+	private static void thread(Runnable runnable, boolean daemon) {
 		Thread brokerThread = new Thread(runnable);
 		brokerThread.setDaemon(daemon);
 		brokerThread.start();
