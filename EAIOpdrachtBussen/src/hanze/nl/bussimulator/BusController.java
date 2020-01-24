@@ -14,19 +14,15 @@ public class BusController {
     }
 
     public boolean shouldRun() {
-        return !busCollection.getBussesReadyToGo().isEmpty();
-    }
-
-    public int nextBusToRun() {
-        return (shouldRun() ? Collections.min(busCollection.getBussesReadyToGo().keySet()) : -1);
+        return !busCollection.getBussesReadyToGo().isEmpty() || !busCollection.getActiveBusses().isEmpty();
     }
 
     public void moveBussen(int nu){
         Iterator<Bus> itr = busCollection.getActiveBusses().iterator();
         while (itr.hasNext()) {
             Bus bus = itr.next();
-            boolean eindpuntBereikt = bus.move();
-            if (eindpuntBereikt) {
+            bus.move();
+            if (bus.getEindpuntBereikt()) {
                 bus.sendLastETA(nu);
                 itr.remove();
             }

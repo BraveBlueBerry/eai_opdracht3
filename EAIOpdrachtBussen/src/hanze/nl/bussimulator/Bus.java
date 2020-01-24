@@ -1,6 +1,5 @@
 package hanze.nl.bussimulator;
 
-import com.thoughtworks.xstream.XStream;
 import hanze.nl.bussimulator.Halte.Positie;
 
 public class Bus{
@@ -12,6 +11,7 @@ public class Bus{
 	private int richting;
 	private boolean bijHalte;
 	private String busID;
+	private boolean eindpuntBereikt;
 	
 	Bus(Lijnen lijn, Bedrijven bedrijf, int richting){
 		this.lijn=lijn;
@@ -20,6 +20,7 @@ public class Bus{
 		this.halteNummer = -1;
 		this.totVolgendeHalte = 0;
 		this.bijHalte = false;
+		this.eindpuntBereikt = false;
 		this.busID = "Niet gestart";
 	}
 	
@@ -52,9 +53,16 @@ public class Bus{
 				lijn.name(), lijn.getHalte(halteNummer), lijn.getRichting(halteNummer));		
 		naarVolgendeHalte();
 	}
+
+	private void setEindpuntBereikt(boolean bereikt){
+	    eindpuntBereikt = bereikt;
+    }
+
+	public boolean getEindpuntBereikt(){
+	    return getEindpuntBereikt();
+    }
 	
-	boolean move(){
-		boolean eindpuntBereikt = false;
+	void move(){
 		bijHalte=false;
 		if (halteNummer == -1) {
 			start();
@@ -62,10 +70,9 @@ public class Bus{
 		else {
 			totVolgendeHalte--;
 			if (totVolgendeHalte==0){
-				eindpuntBereikt=halteBereikt();
+			    setEindpuntBereikt(halteBereikt());
 			}
 		}
-		return eindpuntBereikt;
 	}
 	
 	void sendETAs(int nu){

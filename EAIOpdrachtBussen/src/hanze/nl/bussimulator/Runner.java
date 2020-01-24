@@ -1,3 +1,4 @@
+
 package hanze.nl.bussimulator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,8 +22,6 @@ public class Runner {
 		while (busController.shouldRun()) {
 			System.out.println("De tijd is:" + tijd);
 			busController.startBussen(tijd);
-			int volgende = busController.nextBusToRun();
-
 			busController.moveBussen(tijd);
 			busController.sendETAs(tijd);
 			Thread.sleep(interval);
