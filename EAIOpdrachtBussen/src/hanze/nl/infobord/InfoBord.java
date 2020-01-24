@@ -109,21 +109,25 @@ public class InfoBord {
 		scherm.repaint();		
 	}
 	
-	public static void verwerktBericht(String incoming){
+	public static void safeVerwerkBericht(String incoming){
         try {
-			JSONBericht bericht = new ObjectMapper().readValue(incoming, JSONBericht.class);
-			String busID = bericht.getBusID();
-			Integer tijd = bericht.getTijd();
-			if (!laatsteBericht.containsKey(busID) || laatsteBericht.get(busID)<=tijd){
-				laatsteBericht.put(busID, tijd);
-				if (bericht.getAankomsttijd()==0){
-					infoBordRegels.remove(busID);
-				} else {
-					infoBordRegels.put(busID, bericht);
-				}
-			}
+			verwerkBericht(incoming);
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public static void verwerkBericht(String incoming) throws IOException {
+		JSONBericht bericht = new ObjectMapper().readValue(incoming, JSONBericht.class);
+		String busID = bericht.getBusID();
+		Integer tijd = bericht.getTijd();
+		if (!laatsteBericht.containsKey(busID) || laatsteBericht.get(busID)<=tijd){
+			laatsteBericht.put(busID, tijd);
+			if (bericht.getAankomsttijd()==0){
+				infoBordRegels.remove(busID);
+			} else {
+				infoBordRegels.put(busID, bericht);
+			}
 		}
 	}
 }

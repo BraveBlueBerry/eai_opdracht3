@@ -13,7 +13,7 @@ public class TijdFuncties {
 	
     public void initSimulatorTijden(int interval, int syncInterval){
     	simulatorTijd=new Tijd(0,0,0);
-    	startTijd=getCentralTime();
+    	startTijd= saveGetCentralTime();
     	verschil=berekenVerschil(startTijd,simulatorTijd);
     	this.interval=interval;
     	this.syncCounter=syncInterval;
@@ -63,8 +63,8 @@ public class TijdFuncties {
     	return new Tijd(urenVerschil, minutenVerschil, secondenVerschil);
     }
     
-    private void synchroniseTijd(){
-    	Tijd huidigeTijd = getCentralTime();
+    private void synchroniseTijd() {
+    	Tijd huidigeTijd = saveGetCentralTime();
     	System.out.println("De werkelijke tijd is nu: "+ huidigeTijd.toString());
     	Tijd verwachtteSimulatorTijd = simulatorTijd.copyTijd();
     	verwachtteSimulatorTijd.increment(verschil);
@@ -72,19 +72,21 @@ public class TijdFuncties {
     	verschil.increment(delay);
     }
     
-    private Tijd getCentralTime()
-    {
+    private Tijd saveGetCentralTime() {
     	try {
-    		HTTPFuncties httpFuncties = new HTTPFuncties();
-			String result = httpFuncties.executeGet("xml");
-	        XStream xstream = new XStream();
-	        xstream.alias("Tijd", Tijd.class);
-	        Tijd tijd=(Tijd)xstream.fromXML(result);
-	        return tijd;
-
+    		return getCentralTime();
     	} catch (IOException e) {
 			e.printStackTrace();
 			return new Tijd(0,0,0);
 		}
     }
+
+    private Tijd getCentralTime() throws IOException {
+		HTTPFuncties httpFuncties = new HTTPFuncties();
+		String result = httpFuncties.executeGet("xml");
+		XStream xstream = new XStream();
+		xstream.alias("Tijd", Tijd.class);
+		Tijd tijd=(Tijd)xstream.fromXML(result);
+		return tijd;
+	}
 }
